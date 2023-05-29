@@ -30,18 +30,7 @@
         </form>
     </div>
 
-<!--    <div th:if="${person == null}" th:with="iden = ${'person.getPersonId()'}">-->
-<!--        <p>This book is now available!</p>-->
-<!--        <label for="fullname"></label>-->
-<!--        <select id="fullname" th:field="${iden}">-->
-<!--            <option th:each="pers : ${people}" th:value="${'pers.personId'}" th:text="${pers.fullName}"></option>-->
-<!--        </select>-->
 
-<!--        <form th:action="@{/books/{id}/assign(id=${book.getId()})}" th:method="POST">-->
-<!--            <button type="submit">Assign</button>-->
-<!--        </form>-->
-
-<!--    </div>-->
     <hr>
     <form th:method="GET" th:action="@{/books}">
         <input type="submit" value="Comeback to previous page">

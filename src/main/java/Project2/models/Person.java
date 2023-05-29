@@ -1,21 +1,31 @@
-package Project1.models;
+package Project2.models;
 
-import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
+@Entity
+@Table(name = "Person")
 public class Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int personId;
-    @NotNull(message = "Name should be valid!")
+
+    @OneToMany(mappedBy = "owner")
+    private List<Book> bookList;
+
+    @Column(name = "name")
     private String fullName;
 
-    @NotNull(message = "Year should be valid!")
-    @Size(min = 1923, max = 2016, message = "Year should be valid!")
+    @Column(name = "yearOfBirth")
     private int yearOfBirth;
 
-    public Person(int personId, String fullName, int yearOfBirth) {
-        this.personId = personId;
+    public Person(String fullName, int yearOfBirth) {
         this.fullName = fullName;
         this.yearOfBirth = yearOfBirth;
     }
@@ -46,6 +56,14 @@ public class Person {
 
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     @Override

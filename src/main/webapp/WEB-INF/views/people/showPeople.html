@@ -13,6 +13,7 @@
            th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}"></a>
     </div>
     <hr>
+
     <form th:method="GET" th:action="@{/people/new}">
         <button type="submit">Create new person!</button>
     </form>
