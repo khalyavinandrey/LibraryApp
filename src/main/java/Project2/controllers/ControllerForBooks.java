@@ -63,8 +63,6 @@ public class ControllerForBooks {
     public String postSearchingBook(Model model,
                                     @RequestParam("query") String query) {
         model.addAttribute("book", bookService.getBooksBySearch(query));
-        System.out.println(query);
-        System.out.println(bookService.getBooksBySearch(query));
         return "/books/searchBook";
     }
 
